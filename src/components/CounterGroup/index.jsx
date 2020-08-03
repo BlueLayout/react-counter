@@ -12,15 +12,15 @@ class CounterGroup extends React.Component {
 
     generatorCounter = () => {
         return new Array(this.state.CounterNum).fill(0).map((value, index) =>
-            <Counter key={index} counter-increase={this.handleIncrease} counter-decrease={this.handleDecrease}/>
+            <Counter key={index} counter-increase={this.handleIncrease} counter-decrease={this.handleDecrease} CounterNum={this.state.CounterNum}/>
         )
     };
 
     render() {
         return <div>
-            Total:<input type='text' value={this.state.total} readOnly/>
-            <br/>
             CountNum:<input type='text' value={this.state.CounterNum} onChange={this.changeCountNum}/>
+            <br/>
+            Total:<input type='text' value={this.state.total} readOnly/>
             {this.generatorCounter()}
         </div>
     }
@@ -40,11 +40,13 @@ class CounterGroup extends React.Component {
     changeCountNum = (e) => {
         if (e.target.value.match(/[0-9]+/g)) {
             this.setState({
-                CounterNum: parseInt(e.target.value)
+                CounterNum: parseInt(e.target.value),
+                total: 0
             })
         } else {
             this.setState({
-                CounterNum: 0
+                CounterNum: 0,
+                total: 0
             })
         }
     };

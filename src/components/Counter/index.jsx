@@ -31,6 +31,16 @@ class Counter extends React.Component {
             number: this.state.number - 1
         });
         this.props['counter-decrease']()
+    };
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.CounterNum !== state.CounterNum) {
+            return {
+                number: 0,
+                CounterNum: props.CounterNum
+            }
+        }
+        return null;
     }
 }
 
