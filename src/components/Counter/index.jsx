@@ -12,9 +12,9 @@ class Counter extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.decreaseNum}>-</button>
+                <button onClick={this.props.onDecrement}>-</button>
                 <mark>{this.state.number}</mark>
-                <button onClick={this.increaseNum}>+</button>
+                <button onClick={this.props.onIncrement}>+</button>
             </div>
         )
     }
@@ -23,14 +23,14 @@ class Counter extends React.Component {
         this.setState({
             number: this.state.number + 1
         });
-        this.props['counter-increase']()
+        this.props.onIncrement()
     };
 
     decreaseNum = () => {
         this.setState({
             number: this.state.number - 1
         });
-        this.props['counter-decrease']()
+        this.props.onDecrement()
     };
 
     static getDerivedStateFromProps(props, state) {

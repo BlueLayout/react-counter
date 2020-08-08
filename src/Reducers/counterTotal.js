@@ -1,6 +1,7 @@
-export default (state = 0, action) => {
+const total = 0;
+export default (state = total, action) => {
     switch (action.type) {
-        case "increment":
+        case 'increment':
             return state + 1;
         case "decrement":
             return state - 1;
@@ -9,4 +10,4 @@ export default (state = 0, action) => {
         default:
             return state;
     }
-};
+}
